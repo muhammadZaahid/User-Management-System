@@ -1,12 +1,14 @@
 package com.zaahid.usermanagement.resource;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.zaahid.usermanagement.model.User;
 import com.zaahid.usermanagement.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -26,4 +28,8 @@ public class UserController {
        return repository.findAll();
    }
     
+   @GetMapping("/findAllUSers/{id}")
+   public Optional<User> getUser(@PathVariable int id){
+        return repository.findById(id);
+   }
 }
